@@ -1,0 +1,157 @@
+<html>
+<head>
+<title>Room Availability</title>
+
+
+<script>
+
+function gobuilding() {
+  var bid = document.getElementById("buildinglist").value;
+  document.location = "availability?building=" + bid;
+}
+function goroom() {
+  var rid = document.getElementById("roomlist").value;
+  document.location = "availability?building={{building.id}}&room=" + rid;
+}
+</script>
+
+<!--<script type="text/javascript" src="../js/google.js"></script>-->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21029575-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<style type="text/css"> 
+body {
+     background:url(media/front-end/images/bg.png) repeat;
+}
+.error_box {
+     background-color: #ffcccc;
+     border-color: #cc0000;
+     border-style: solid;
+}
+.padded {
+     padding-left: 10px;
+     padding-top: 10px;
+     padding-right: 10px;
+     padding-bottom: 10px;
+}
+table.displaytable {
+    border-width: 0px;
+    border-style: none;
+    border-collapse: collapse;
+    background-color: #ff00ff; /* if this shows through, there's a bug */
+}
+table.displaytable th {
+    border-width: 1px;
+    padding: 0px;
+    border-style: solid;
+    border-color: gray;
+    background-color: #ffffdd;
+    text-align: left;
+    font-size: 9;
+    font-weight: normal;
+}
+table.displaytable td {
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+    padding: 0px;
+}
+.b0 {
+    background-color: #eeeeee;
+}
+.b8 {
+    background-color: #ff0000;
+}
+.b9 {
+    background-color: #00ff00;
+}
+.rowheader {
+    background-color: #ffffdd;
+}
+.rowheadertext {
+    padding: 2px;
+    font-size: small;
+}
+</style>
+
+</head>
+<body>
+
+<form>
+{% if bd_list != None %}
+<select id="buildinglist" onChange="gobuilding();">
+<option>[Building]</option>
+{% for bd in bd_list %}
+<option value="{{bd.id}}">{{bd.name}}</option>
+{% endfor %}
+</select>
+{% else %}
+<a href = "availability">{{building.name}}</a> :: 
+
+{% if room_list != None %}
+<select id="roomlist" onChange="goroom();">
+<option>[Room]</option>
+{% for rm in room_list %}
+<option value="{{rm.id}}">{{rm.name}}</option>
+{% endfor %}
+</select>
+{% else %}
+<a href="availability?building={{building.id}}">{{room.name}}</a>
+{% endif %}
+{% endif %}
+</form>
+
+{% if avail_table != None %}
+<table class="displaytable">
+<tr>
+<th/>
+{% for header in headers %}<th colspan='{{blocks_per_hour}}'>{{header}}</th>{% endfor %}
+</tr>
+{% for daynamelink, daydata in avail_table %}
+<tr>
+<td class="rowheader"><div class="rowheadertext">
+{% if daynamelink.1 %}<a href="{{daynamelink.1}}">{{daynamelink.0}}</a>
+{% else %}{{daynamelink.0}}{%endif%}
+</div></td>
+{% for time in daydata %}<td class="b{{time}}" width='6'>{% endfor %}
+</tr>
+{% endfor %}
+</table>
+<br>
+<table border='1' class="displaytable">
+<tr>
+<td class="b0"><div class="padded">Closed</div></td>
+<td class="b8"><div class="padded">Open but unavailable</div></td>
+<td class="b9"><div class="padded">Open and available</div></td>
+<td><div class="padded">Database Inconsistency</div></td>
+</tr>
+</table>
+<p/>
+<table border='0'>
+<tr><td>(N)</td><td>No reservation system available (first-come-first-serve)</td></tr>
+<tr><td>(E)</td><td>External Reservation System</td></tr>
+</table>
+{% endif %}
+
+
+{% if errormsg != None %}
+<div class="padded"><div id="errormsg" class="error_box padded">
+{{errormsg}}
+</div></div>
+{% endif %}
+
+
+</body>
+</html>

@@ -1,0 +1,544 @@
+
+<!-- saved from url=(0133)http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?dev=0;inquiry=roomReservations;library=vp;date=Wednesday,%20December%2029,%202010 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Serret-Cookie" content="hp=/; domain=.library.upenn.edu; path=/"><title>Penn Library Room Scheduler </title><link href="./library_files/roomscheduler.css" rel="stylesheet" type="text/css"><link href="./library_files/roomsstaffview.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" media="all" href="./library_files/calendar-win2k-cold-1.css" title="win2k-cold-1"><!--[if IE]<link rel="stylesheet" type="text/css" href="http://www.library.upenn.edu/styles/ie11px.css" />[endif]--><!--[if IE]<link rel="stylesheet" type="text/css" href="http://www.library.upenn.edu/styles/ie11px.css" />[endif]--><!--[if IE]<link rel="stylesheet" type="text/css" href="http://www.library.upenn.edu/styles/roomschedulerie.css" />[endif]--><!--[if IE]<link rel="stylesheet" type="text/css" href="http://www.library.upenn.edu/styles/roomschedulerIE7.css" />[endif]--><script type="text/javascript" async="" src="./library_files/ga.js"></script><script language="JavaScript" type="text/javascript" src="./library_files/openshut2.js"></script><script src="./library_files/calendar.js" type="text/javascript"></script><script src="./library_files/calendar-en.js" type="text/javascript"></script><script src="./library_files/calendar-setup.js" type="text/javascript"></script><script src="./library_files/prototype.js" type="text/javascript" language="JavaScript"></script><script src="./library_files/scriptaculous.js" type="text/javascript" language="JavaScript"></script><script type="text/javascript" src="./library_files/builder.js"></script><script type="text/javascript" src="./library_files/effects.js"></script><script type="text/javascript" src="./library_files/dragdrop.js"></script><script type="text/javascript" src="./library_files/controls.js"></script><script type="text/javascript" src="./library_files/slider.js"></script><script src="./library_files/unittest.js" type="text/javascript" language="JavaScript "></script><script src="./library_files/roomsched.js" type="text/javascript" language="JavaScript "></script><script src="./library_files/script_pratap.js" type="text/javascript" language="JavaScript "></script><script src="./library_files/textFileScript.js" type="text/javascript" language="JavaScript "></script><script src="./library_files/test.pl" type="text/perl" language="PerlScript "></script><script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-982196-12']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script></head><body onload="getDateValue(&#39;rooms&#39;, &#39;0&#39;, &#39;vp&#39;); ; storeVal(&#39;Wednesday, December 29, 2010&#39;, &#39;rooms&#39;, &#39;0&#39;, &#39;vp&#39;); return false;"><div id="banner"><div id="bannerlining"><div class="refresh"><img id="turnon" onclick="turnOn()" style="display:none" src="./library_files/refreshgreen.gif" alt="Auto refresh is on" title="Auto refresh is on"><img id="turnoff" onclick="turnOff()" style="display:block" src="./library_files/refreshred.gif" alt="Auto refresh is off" title="Auto refresh is off"></div><div class="nav">Alexey Komissarouk (alexeym) |
+                                <a id="logout" href="http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?inquiry=logout">logout</a></div></div></div><div id="liblogo"><a href="http://www.library.upenn.edu/"><img src="./library_files/liblogors.gif" alt="Penn Library Home"></a></div><div class="titlersa">Room Scheduler: Availability</div><div class="holdtable"><form id="id_roomScheduler" name="DateSelector" method="get" action="http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?dev=0;inquiry=roomReservations"><div class="leftColunitrs"><div class="leftColumnHeaderrsnav"><a href="http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?dev=0;library=vp;date=Dec%2028,%202010;inquiry=roomReservations;">«<img src="./library_files/spacer.gif" width="11" height="1" alt="*"></a><span class="rsnavtitle">Wednesday, December 29, 2010</span><a href="http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?dev=0;library=vp;date=Dec%2030,%202010;inquiry=roomReservations;"><img src="./library_files/spacer.gif" width="11" height="1" alt="*">»
+                                </a></div><div class="holdlist"><input type="hidden" name="inquiry" value="roomReservations"><input type="hidden" name="library" value="vp"><input type="hidden" name="dev" value="0"><div id="cbForms"><table cellpadding="0" cellspacing="0"><tbody><tr><td class="choose">Choose a day: </td><td><input class="fa" name="date" id="if_date" type="text" size="30" value="Wednesday, December 29, 2010" onchange="submitDateSelector(false);"></td><td><img src="./library_files/img.gif" id="f_trigger_c" style="border: 1px solid red; cursor: pointer;" title="Date selector" onmouseover="this.style.background=&#39;red&#39;;" onmouseout="this.style.background=&#39;&#39;"></td><td style="padding-left:1em; display: none;"><i>Format: Monday, January 1, 2000</i></td></tr></tbody></table><script type="text/javascript">
+                                            Calendar.setup({
+                                            inputField     :    "if_date",     // id of the input field
+                                            ifFormat       :    "%A, %B %e, %Y",    // format of the input field
+                                            button         :    "f_trigger_c",  // trigger for the calendar (button ID)
+                                            align          :    "B2",           // alignment (defaults to "Bl")
+                                            singleClick    :    true
+                                            });
+                                        </script></div><div id="calbox" class="calboxoff"></div><div class="navlink"><a href="http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?dev=0;library=vp">Back to Room Scheduler, public view</a></div></div></div></form><table cellpadding="0" cellspacing="0" border="0" class="availability"><tbody><tr><td class="emptyabove" colspan="37"><div class="key"><span class="dotlinkkey">•</span>   reserved</div><img src="./library_files/spacer(1).gif" width="1" height="1"></td></tr><tr><th class="roomgroupname" colspan="36"><a xmlns="" href="http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?dev=0;inquiry=roomReservations;library=vp_public_study;date=Wednesday,%20December%2029,%202010">Van Pelt-Dietrich</a>
+                            --
+                           Weigle Information Commons
+                            --
+                           <a xmlns="" href="http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?dev=0;inquiry=roomReservations;library=lippincott;date=Wednesday,%20December%2029,%202010">Lippincott Library</a>
+			    --
+                           <a xmlns="" href="http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?dev=0;inquiry=roomReservations;library=vpusc;date=Wednesday,%20December%2029,%202010">Goldstein Undergraduate Study Center</a>
+                            --  
+                           <a xmlns="" href="http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?dev=0;inquiry=roomReservations;library=vp34;date=Wednesday,%20December%2029,%202010">Van Pelt 3rd and 4th Floors</a>
+			   --
+                           <a xmlns="" href="http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?dev=0;inquiry=roomReservations;library=ormandy;date=Wednesday,%20December%2029,%202010">Music Library, Ormandy Center</a></th><td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td></tr><tr><td class="emptybelow" colspan="37"><img src="./library_files/spacer(1).gif" width="1" height="1"></td></tr><tr><th class="prehours">12/29/2010</th><td xmlns="" class="half">8:3</td>
+<td xmlns="" class="hour">9</td>
+<td xmlns="" class="half">:3</td>
+<td xmlns="" class="hour">10</td>
+<td xmlns="" class="half">:3</td>
+<td xmlns="" class="hour">11</td>
+<td xmlns="" class="half">:3</td>
+<td xmlns="" class="nn">12</td>
+<td xmlns="" class="half">:3</td>
+<td xmlns="" class="hour">1</td>
+<td xmlns="" class="half">:3</td>
+<td xmlns="" class="hour">2</td>
+<td xmlns="" class="half">:3</td>
+<td xmlns="" class="hour">3</td>
+<td xmlns="" class="half">:3</td>
+<td xmlns="" class="hour">4</td>
+<td xmlns="" class="half">:3</td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td></tr><tr xmlns="">
+<th>Room 116</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Room 117</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Room 118</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Room 119</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Room 120</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Room 123</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Room 126 (Plasma Screen)</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Room 127 (Plasma Screen, Videotaping)</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">• </td>
+<td class="halfdotlink">• </td>
+<td class="dotlink">• </td>
+<td class="halfdotlink">• </td>
+<td class="nn">• </td>
+<td class="halfdotlink">• </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Room 128 (Plasma Screen, Videotaping)</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Room 129 (Plasma Screen, Videotaping)</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Booth 1</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Booth 2</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Booth 3</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Booth 4</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Booth 5</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Booth 6</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Booth 7</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Booth 8</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Booth 9</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Booth 10</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Booth 11</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr xmlns="">
+<th>Booth 12</th>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="nn">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="dotlink">  </td>
+<td class="halfdotlink">  </td>
+<td class="endcell"><img src="./library_files/spacer(1).gif" width="1" height="1"></td>
+</tr>
+<tr><td class="emptybelow" colspan="37"></td></tr></tbody></table><div class="notice">
+                            Study room capacity: 6 (For information on special large-capacity rooms, contact <a href="mailto:wic1@pobox.upenn.edu">WIC Staff</a>)
+                          </div><form name="MakeReservations" method="get" action="http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?dev=0;inquiry=roomReservations"><div class="leftColunitrs2"><div class="leftColumnHeaderrsnav"><span class="rsnavtitle">Make Reservations for Wednesday, December 29, 2010</span></div><div class="holdlist"><div id="cbForms"><table cellpadding="0" cellspacing="0" class="rs2"><tbody><tr><td class="rs2label">Rooms: </td><input type="hidden" name="room" id="room" value=""><input type="hidden" name="library" value="vp"><input type="hidden" name="schedulepage" value="yes"><input type="hidden" name="date" value="Wednesday, December 29, 2010"><input type="hidden" name="inquiry" id="inquiry_type" value=""><input type="hidden" name="dev" value="0"><td><select name="roomid" id="roomId" onchange="selectRoomName()"><option selected="">Available Rooms</option><option xmlns="" value="1.1">Room 116</option>
+<option xmlns="" value="1.2">Room 117</option>
+<option xmlns="" value="1.3">Room 118</option>
+<option xmlns="" value="1.4">Room 119</option>
+<option xmlns="" value="1.5">Room 120</option>
+<option xmlns="" value="1.6">Room 123</option>
+<option xmlns="" value="2.7">Room 126 (Plasma Screen)</option>
+<option xmlns="" value="2.8">Room 127 (Plasma Screen, Videotaping)</option>
+<option xmlns="" value="2.9">Room 128 (Plasma Screen, Videotaping)</option>
+<option xmlns="" value="2.10">Room 129 (Plasma Screen, Videotaping)</option>
+<option xmlns="" value="11.35">Booth 1</option>
+<option xmlns="" value="11.36">Booth 2</option>
+<option xmlns="" value="11.37">Booth 3</option>
+<option xmlns="" value="11.38">Booth 4</option>
+<option xmlns="" value="11.39">Booth 5</option>
+<option xmlns="" value="11.40">Booth 6</option>
+<option xmlns="" value="11.42">Booth 7</option>
+<option xmlns="" value="11.43">Booth 8</option>
+<option xmlns="" value="11.44">Booth 9</option>
+<option xmlns="" value="11.45">Booth 10</option>
+<option xmlns="" value="11.46">Booth 11</option>
+<option xmlns="" value="11.47">Booth 12</option></select></td><td colspan="2"> </td></tr><tr><td class="rs2label">Start Time:</td><td><select name="time"><option selected="">start time </option><option value="11:00">11:00 AM</option><option value="11:30">11:30 AM</option><option value="12:00">12:00 PM</option><option value="12:30">12:30 PM</option><option value="13:00">1:00 PM</option><option value="13:30">1:30 PM</option><option value="14:00">2:00 PM</option><option value="14:30">2:30 PM</option><option value="15:00">3:00 PM</option><option value="15:30">3:30 PM</option><option value="16:00">4:00 PM</option><option value="16:30">4:30 PM</option></select></td><td class="rs2label2">Period of Time: </td><td><select name="length"><option value="30">30 minutes</option><option value="60">1 hour</option><option value="90">1 hour 30 minutes</option><option value="120">2 hours</option><option value="150">2 hours 30 minutes</option><option value="180">3 hours</option></select></td></tr><tr><td class="rs2label">Number of people:</td><td><input type="text" value="" name="numPeople" size="1" maxlength="2"></td><td colspan="2"> </td></tr><tr><td class="rs2button" colspan="4"><input type="image" name="" value="roomBook" src="./library_files/submitstaff.gif" alt="Submit" onclick="changeInquiry(&#39;roomBook&#39;); "></td></tr></tbody></table></div><div id="calbox" class="calboxoff"></div></div></div></form><div class="notice"><div class="noticearrow"><img src="./library_files/noticearrow.gif"></div><div>You can schedule rooms for up to three hours over the next seven days.
+                                For information on all Penn Library group study rooms, visit the '
+                                <a style="cursor:pointer" onclick="window.open(&#39;http://www.library.upenn.edu/facilities/groupstudy.html&#39;,&#39;&#39;,&#39;directories=yes,toolbar=yes,width=800,height=800,status=yes,location=yes,scrollbars=yes,resizable=yes,menubar=yes,alwaysRaised=yes&#39;); return false">
+                                    Group Study Rooms web page
+                                </a>'.
+                            </div></div></div>
+</body></html>

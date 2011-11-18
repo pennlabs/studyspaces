@@ -1,0 +1,12 @@
+{% if rk_list %}	
+	{% for rk in rk_list %}
+	
+		{{ rk.name }}&nbsp;|&nbsp;{{ rk.building }}<br/>	
+		
+		{% for r in rk.room_set.all %}
+		<li>{{ r.name }}</li>
+		{% endfor %}
+		
+	
+	{% endfor %}
+{% endif %}

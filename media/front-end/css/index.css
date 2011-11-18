@@ -1,0 +1,386 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 
+main cyan:	#4096EE
+dark blue:	#15579C
+lite blue:	#8FBEEE
+
+nice red:		#FC523F
+lite red:		#FC968B
+dark red: 	#A42315
+
+*/
+
+body {
+	background:url(../images/bg.png) repeat;
+	font-family:'Lucida Grande',Verdana,Helvetica,sans-serif;
+	font-size:12px;
+	line-height:150%;
+}
+
+div {
+	position:relative;
+	display:block;
+}
+
+input[type=checkbox] {
+	margin-right:5px;
+	margin-bottom:0px;
+}
+
+strong {
+	color:#4096EE;
+	font-weight:bold;
+}
+
+em {
+	color:#666;
+}
+
+.gray {
+	color:#999;
+}
+
+.red {
+	color:#F00;
+}
+
+a {
+	color:#999;
+}
+a:hover {
+	color:#4096EE;
+	text-decoration:underline;
+}
+
+.shadow {
+	-moz-box-shadow: 1px 3px 8px #777;
+	-webkit-box-shadow: 1px 3px 8px #777;
+	box-shadow: 1px 3px 8px #777;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
+
+.clickable {
+	cursor:pointer;
+}
+
+div#notifybar {
+	padding-top:10px;
+	padding-bottom:10px;
+	background-color:#4096EE;
+	border-bottom:1px solid #15579C;
+	text-align:center;
+	color:#FFF;
+}
+
+div#xicon {
+	float:right;
+	margin-top:1px;
+	margin-right:15px;
+	width:16px;
+	height:16px;
+	background:url(../images/x_icon.png) no-repeat;
+	cursor:pointer;
+}
+div#xicon:hover {
+	background:url(../images/x_icon.png) no-repeat 0px -16px;
+}
+
+div#wrapper {
+	margin: 0px auto;
+	width:900px;
+}
+
+div#header {
+	height:75px;
+}
+
+div#logoshead {
+	float:right;
+	margin-top:10px;
+	margin-right:18px;
+}
+
+div#filter {
+	background:#FFF;
+	border:#4096EE 1px solid;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	padding:20px 20px 0px 20px;
+	margin-bottom:20px;
+}
+
+div#filter .header {
+	margin-bottom:20px;
+	display:none; /* HIDDEN */
+}
+
+p#time_p {
+	font-size:10px;
+}
+
+#toggle_filter {
+	float:right;
+	cursor:pointer;
+	font-size:10px;
+}
+
+div#filter_body {
+	overflow:hidden;
+	margin-bottom:20px;
+}
+
+div#filter .block {
+	float:left;
+	width:110px;
+	padding-right:15px;
+}
+
+div#filter_body .texttitle {
+	margin-bottom:8px;
+	color:#4096EE;
+	font-size:12px;
+	font-weight:bold;
+}
+
+div#filter_body .filteroption{
+	font-size:10px;
+}
+
+div#main {	
+	background:#FFF;
+	border:#CCC 1px solid;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	width:470px;
+	
+	padding:20px;
+}
+
+div#rightColumn {
+	float:right;
+	width:365px;
+}
+
+div#mapbox {
+	background:#FFF;
+	border:#CCC 1px solid;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	width:365px;
+	height:330px;
+	overflow:hidden;
+}
+
+div#legend {
+	border-bottom: 1px solid #000;
+	padding-bottom: 5px;
+	margin: 10px 0;
+	
+	font-size:10px;
+	text-align:right;
+}
+
+div#promo {
+}
+
+div#shares {
+	width: 170px;
+	margin-top: 15px;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+div#footer {
+	padding-top:20px;
+	padding-bottom:20px;
+	text-align:center;
+	font-size:10px;
+	color:#333;
+}
+
+select.time_specify_sel {
+	font-size:11px;
+	height:20px;
+	margin:5px 0;
+}
+.datetimetextbox {
+	font-size:11px;
+	height:20px;
+	margin-top:3px;
+	margin-right:5px;
+	width:65px;
+	text-align:center;
+}
+
+p#sort {
+	margin-bottom:10px;
+	display:none;
+}
+
+.sort_choice {
+	color:#999;
+	cursor:pointer;
+}
+.sort_choice:hover {
+	color:#4096EE;
+	text-decoration:underline;
+}
+.selected.sort_choice{
+	color:#000;
+}
+
+.room {
+	border-top:#CCC 1px solid;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+.room:first-child {
+	border:0px;
+	padding-top:0px;
+}
+.room:last-child {
+	padding-bottom:0px;
+}
+.room .roomkindname {
+	color:#666;
+	font-size:14px;
+}
+.room .entrytitle {
+	width:400px; 
+	text-indent:-10px; 
+	padding-left:10px;
+}
+.room .buildingname {
+	color:#4096EE;
+	font-size:14px;	
+}
+.room .roomname {
+	margin-top:7px;
+	font-size:10px;
+}
+.room .roomcomments {
+	font-size:10px;
+	color:#999;
+	
+	width:400px;
+	margin-top:5px;
+}
+.room .available {
+	font-size:10px;
+	cursor:pointer;
+	color:#999;
+}
+.room .available:hover {
+	text-decoration:underline;
+}
+.room div.icons {
+	position:absolute;
+	right:0;
+	bottom:0;
+	padding-bottom:10px;
+	
+	z-index:10;
+}
+.room:last-child div.icons {
+	padding-bottom:0px;
+}
+.room .icons img {
+	vertical-align:bottom;
+}
+.room .capacity {
+	display:inline;
+	background-color:#CCC;
+	color:#FFF;
+	font-size:10px;
+	font-weight:bold;
+	padding:2px;
+	
+	cursor:default;
+}
+.room .roomlist {
+	font-size:10px;
+  width:385px; 
+	color:#555;
+}
+.room .roomlist.hide{
+	display:none;
+}
+.room .listitem{
+	display:inline-block;
+	margin-right:10px;
+}
+.room.hilight {
+	background-color:#FFC;
+}
+
+/* button class */
+.room .button {
+	background-color: #CCC;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	padding: 1px 3px;
+	font-size:10px;
+	font-weight:bold;
+	text-decoration:none;
+	color: #FFF;
+		
+	cursor:pointer;
+	
+	float:right;
+	margin-left:5px;
+	
+}
+.room .button:hover {
+	background-color: #4096EE;
+	border-right: 1px solid #15579C;
+	border-bottom: 1px solid #15579C;
+}
+.room .button:active {
+  border:none;
+	border-top: 1px solid #15579C;
+	border-left: 1px solid #15579C;
+}
+/* extended share button */
+.room .share.button{
+	background-color: #8FBEEE;
+	border-right: 1px solid #4096EE;
+	border-bottom: 1px solid #4096EE;
+}
+.room .share.button:hover {
+	background-color: #4096EE;
+	border-right: 1px solid #15579C;
+	border-bottom: 1px solid #15579C;
+}
+.room .share.button:active {
+  border:none;
+	border-top: 1px solid #15579C;
+	border-left: 1px solid #15579C;
+}
+/* extended reserv button */
+.room .reserve.button{
+	background-color: #FC8A7E;
+	border-right: 1px solid #FC523F;
+	border-bottom: 1px solid #FC523F;
+}
+.room .reserve.button:hover {
+	background-color: #FC523F;
+	border-right: 1px solid #A42315;
+	border-bottom: 1px solid #A42315;
+}
+.room .reserve.button:active {
+  border:none;
+	border-top: 1px solid #A42315;
+	border-left: 1px solid #A42315;
+}

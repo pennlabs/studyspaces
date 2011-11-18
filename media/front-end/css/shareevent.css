@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 
+main cyan:	#4096EE
+
+*/
+
+.roominfo .roomkindname {
+	color:#666;
+}
+.roominfo .buildingname {
+	color:#4096EE;	
+}
+.roominfo .roomname {
+	font-size:18px;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+.roominfo div.icons {
+	position:absolute;
+	right:0;
+	top:0;
+	
+	z-index:10;
+}
+.roominfo .icons img {
+	vertical-align:bottom;
+}
+.roominfo .capacity {
+	display:inline;
+	background-color:#CCC;
+	color:#FFF;
+	font-size:10px;
+	font-weight:bold;
+	padding:2px;
+	
+	cursor:default;
+}
+
+
+.eventinfo {
+	margin-top:15px;
+	border-top:#CCC 1px solid;
+	padding-top:15px;	
+	
+	margin-bottom:15px;
+	border-bottom:#CCC 1px solid;
+	padding-bottom:15px;	
+}
+#time {
+	font-size:18px;
+	margin-bottom:5px;
+}
+#date {
+	color:#666;
+}
+
+.urlinfo {
+	font-size:16px;
+}

@@ -1,0 +1,188 @@
+# The old wharton scraper. Still has several useful methods that should be
+# refactored into a scrapertools library. Also may be useful for reference
+# if you ever have to scrape some other page by looking at where
+# the elements are positioned with CSS.
+
+#import sys
+#sys.path.append("BeautifulSoup-3.2.0")
+from BeautifulSoup import BeautifulSoup
+import re
+from bisect import bisect
+from collections import defaultdict
+import datetime
+from datetime import date
+import mechanize
+from PasswordManager import getcredentials
+
+B_HUNTSMAN = "Jon M. Huntsman Hall"
+
+br = mechanize.Browser()
+br.set_handle_equiv(False)
+br.set_handle_robots(False)
+
+login_url = 'http://spike.wharton.upenn.edu/calendar/gsr.cfm'
+(username, password) = getcredentials('whartonscraper-old')
+
+def login(a_url):
+  br.open(login_url)
+  br.select_form(nr=1)
+  br['username'] = username
+  br['password'] = password
+  resp = br.submit()
+  f = br.open(a_url)
+  data = f.read()
+  return scrape(data)
+
+def stylelookup(key, searchstring):
+  return regexkeylookup("%s:(.*?);" % key)
+
+def regexkeylookup(pattern, searchstring, _compiled={}):
+  """ Input:
+        pattern - a string representing a regex of the form foo(bar)baz
+        searchstring - a search string,
+      find the pattern in the string and return bar """
+  if pattern not in _compiled:
+    regex = re.compile(pattern)
+    _compiled[pattern] = regex
+  match = re.search(_compiled[pattern], searchstring)
+  if match is None:
+    return None
+  else:
+    return match.group(1)
+
+def getlocation(htmlbox, mode="rect"):
+  """ Given an HTML object, find its bounding box from the style tag.
+      If mode == 'rect', return (left, top, right, bottom)
+      If mode == 'center', return (x_center, y_center) """
+  stylestring = htmlbox.get('style')
+  left = float(regexkeylookup('left:(.*?)px;', stylestring))
+  top = float(regexkeylookup('top:(.*?)px;', stylestring))
+  width = float(regexkeylookup('width:(.*?)px;', stylestring))
+  height = float(regexkeylookup('height:(.*?)px;', stylestring))
+  if mode == "rect":
+    return (int(left), int(top), int(left+width), int(top+height))
+  elif mode == "center":
+    return (int(left + width/2 + .5), int(top + height/2 + .5))
+
+def time2int(timestring):
+  """ Convert a string of the form '02:15 PM' to an integer of the form 1415 """
+  time = datetime.datetime.strptime(timestring, "%I:%M %p")
+  return 100*time.hour + time.minute
+
+def merge_adjacent_iterator(keys, appear, final):
+  """ Given keys (a sorted list of integers) and appear (a list of booleans),
+      return a generator which returns tuples (start, end) denoting the 
+      range in which appear is True. (start is inclusive, end is exclusive)
+      
+      final represents the "end of list" key.
+      keys should have same # of values as appear.
+
+      For example:
+
+      list(merge_adjacent_iterator([0,2,4,6,8,10,15,20,30,40,50,60,70],
+                                   [0,0,1,1,1,0, 0, 1, 1, 0 ,1, 0, 1], 999))
+      returns [(4,10), (20,40), (50,60), (70,999)]   """
+  startkey = None
+  for this_key, this_appear in zip(keys, appear):
+    if this_appear:
+      if startkey is None:
+        startkey = this_key
+    else:
+      if startkey is not None:
+        yield (startkey, this_key)
+        startkey = None
+  if startkey is not None:
+    yield (startkey, final)
+
+def make_2d_array(w, h, default_value=None):
+  """ Create a 2d array of width w and height h. The element x,y can 
+      be accessed with arr[x][y], where x<w, y<h. """
+  return [[default_value]*h for i in xrange(w)]
+
+#========================================================
+
+def scrape(htmlfile):
+  html_root = BeautifulSoup(htmlfile)
+  html_grid = html_root.find(attrs={"id":"calendar_events_grid"})
+
+  html_allboxes = html_grid.findAll(attrs={"class":"calendarsquare"})
+  xcoord2room = {} #dict: x point at center of box -> "room name"
+  ycoord2time = {} #dict: y point at center of box -> "time"
+  minxy = None # (x,y) coord in upper left coordinate of grid
+  maxxy = None #        ..      lower right      ..
+  for box in html_allboxes:
+    x1, y1, x2, y2 = getlocation(box)
+    if minxy is None:
+      minxy = (x1, y1)
+    maxxy = (x2, y2)
+
+    title = box.get('title')
+    time, room = title.split(" - ")
+    x,y = getlocation(box, "center")
+    xcoord2room[x] = room
+    ycoord2time[y] = time
+
+  minx, miny = minxy
+  maxx, maxy = maxxy
+
+  # the range of the x and y coordinates.
+  imgsize = (maxx - minx, maxy - miny)
+  imgsize_x, imgsize_y = imgsize
+
+  # sorted list of coordinates of the grid elements
+  coords_x = sorted(xcoord2room.keys()) 
+  coords_y = sorted(ycoord2time.keys())
+
+  # lists of rooms and times corresponding to the above coordinates
+  rooms_x = [xcoord2room[x] for x in coords_x]
+  times_y = [ycoord2time[y] for y in coords_y]
+
+  # an image. we're going to draw the CSS boxes into it. 
+  image = make_2d_array(imgsize_x, imgsize_y, True)
+
+  html_unavailableboxes = (html_root.find(attrs={"id":"calendar_events"})
+                                    .findAll("div"))
+
+  #make unavailable boxes unavailable.
+  for box in html_unavailableboxes:
+    x1, y1, x2, y2 = getlocation(box)
+    for x in range(x1, x2):
+      for y in range(y1, y2):
+        try: 
+          image[x - minx][y - miny] = False
+        except IndexError:
+          pass
+
+  # a much smaller image. available[room_index][time_index]
+  available = make_2d_array(len(rooms_x), len(coords_y), True)
+
+  for xidx, x in enumerate(coords_x):
+    for yidx, y in enumerate(coords_y):
+      available[xidx][yidx] = image[x - minxy[0]][y - minxy[1]]
+   
+  output_dictionary = {}
+  for ridx, room in enumerate(rooms_x):
+    room_avail = available[ridx]
+    it = merge_adjacent_iterator((time2int(t) for t in times_y),
+                                 room_avail, 2400)
+    output_dictionary[(room, B_HUNTSMAN)] = list(it)
+
+  return output_dictionary
+
+def fetch_updates(date):
+  a_url = 'http://spike.wharton.upenn.edu/calendar/gsr.cfm?timeframe=long&date=' + str(date.month) + '/' + str(date.day) + '/' + str(date.year)
+  return login(a_url)
+
+def fetch_fromstatic(date):
+  htmlfile = open("wharton_sample.html") #TODO get real data
+  return scrape(htmlfile)
+
+"""
+def main():
+  today = date.today()
+  print fetch_updates(today)
+  #print fetch_fromstatic(today)
+
+if __name__ == "__main__":
+  main()
+"""

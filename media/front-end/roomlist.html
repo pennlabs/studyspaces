@@ -1,0 +1,73 @@
+{% for rk, rval in rk_map_items %}
+		
+	{% for bd in bd_reservable_dict %}
+		{% if rk.building == bd %}
+			<div id="roomIn{{forloop.counter0}}" class="room roomIn{{forloop.counter0}}"
+				onMouseOver="hilightOn(this)" onMouseOut="hilightOff(this)">				
+		{% endif %}
+	{% endfor %}
+				
+		<a class="share button" onClick="shareEvent({{rval.0.id}})" target="_blank">share</a>
+		{% if rk.reserve_type != 'N' %}			
+			<a class="reserve button" href="{{rk.deeplink_reserve_url}}" target="_blank">reserve</a>
+		{% endif %}
+		
+		<div class="icons">					
+			{% if rk.has_whiteboard %}
+				<img src="media/front-end/images/icon_whiteboard.png" title="whiteboard">
+			{% endif %}				
+			{% if rk.has_computer %}
+				<img src="media/front-end/images/icon_computer.png" title="computer">
+			{% endif %}
+			{% if rk.has_big_screen %}
+				<img src="media/front-end/images/icon_projector.png" title="projector">
+			{% endif %}
+			{% if rk.privacy == 'P' %}
+				<img src="media/front-end/images/icon_private.png" title="private">
+			{% else %}
+				<img src="media/front-end/images/icon_public.png" title="public">
+			{% endif %}
+			<div class="capacity" title="capacity">{{ rk.max_occupancy }}</div>
+		</div>
+		
+		<!--<div class="entrytitle" {% if rk.reserve_type = 'N' %}style="width:auto;"{% endif %}>-->
+			<span class="buildingname">{{ rk.building.name }}</span> &mdash; <span class="roomkindname">{{ rk.name }}</span>    
+		<!--</div>-->
+		
+    <div class="roomname">
+			{{ rval.0.name }}
+			{% if rval|length > 1 %}
+				<span class="available" onClick="toggle_roomlist(this)">(and {{rval|length|add:-1}} other{{rval|length|add:-1|pluralize}})</span>
+			{% endif %}
+		</div>		
+		
+		{% if rval|length > 1 %}
+		<div class="roomlist hide">
+			{% for r in rval %}
+				{% if not forloop.first %}
+					<div class="listitem">{{ r.name }}</div>
+				{% endif %}
+      {% endfor %}
+		</div>
+		{% endif %}
+		
+		{% if rk.comments %}
+		<div class="roomcomments">
+			{{rk.comments}}
+		</div>
+		{% endif %}
+		
+	</div>		
+		
+{% endfor %}
+
+
+{% for bd in bd_reservable_dict %}
+	<script type="text/javascript">
+		addMarker( {{bd.latitude}},
+			{{bd.longitude}},
+			"{{ bd.name }}",
+			{% if bd.has_reservable_rooms %}true{% else %}false{% endif %}
+		);
+	</script>
+{% endfor %}	
