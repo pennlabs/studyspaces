@@ -17,8 +17,8 @@ import json
 def bitly(long_url):
   url = "http://api.bitly.com/v3/shorten?"
   args = {}
-  args['login'] =  "cbautista2010"
-  args['apiKey'] =  "bitly api key goes here"
+  args['login'] = "cbautista2010" # you should use your own api key
+  args['apiKey'] = "R_75252ce0ebaff7d49978f5e087a2c466"
   args['longUrl'] = str(long_url)
   args['format'] = 'json'
   formatted = url + urllib.urlencode(args)
