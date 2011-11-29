@@ -20,6 +20,8 @@ This path is a file containing a JSON object with password info:
   }
 }
 
+base64.b64encode can be used for encoding.
+
 """
 
 passwords_path_path = "passworddbpath.txt"

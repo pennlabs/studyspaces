@@ -2,8 +2,10 @@ import datetime
 from datetime import date
 import urllib2
 import json
+from PasswordManager import getcredentials
+(_, apikey) = getcredentials('whartonapikey')
 
-json_url = 'http://spike.wharton.upenn.edu/webservices/api/v0.1/gsrs/?apiKey=WHARTONAPIKEY'
+json_url = 'http://spike.wharton.upenn.edu/webservices/api/v0.1/gsrs/?apiKey=' + apikey
 B_HUNTSMAN = 'Jon M. Huntsman Hall'
 rooms = {'241': ('241', B_HUNTSMAN),
          '242': ('242', B_HUNTSMAN),
