@@ -12,6 +12,8 @@ import json
 from reserve_url import get_reserve_url
 from urllib import urlencode
 
+# Testing precommit hook
+
 class StudySpacesEncoder(json.JSONEncoder):
   def default(self, obj):
     if isinstance(obj, RoomKind):
