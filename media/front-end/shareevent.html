@@ -41,7 +41,7 @@
         var shorturl = "{{ shorturl }}";
         page_init(date, shr, smin, ehr, emin, latitude, longitude, reserve_type, building_name, room_name, shorturl);
       });
-    </script>"
+    </script>
   </head>
 
   <body>
@@ -109,7 +109,9 @@
         </div>
 
         <div class="eventinfo">
-          <img id="add_to_cal" onClick="calendar();" src="http://www.gettyicons.com/free-icons/103/pretty-office-2/png/48/add_event_48.png" height="36px" width="36px" />
+          <span id="add_to_cal" onClick="calendar();">
+          <img id="cal_button" src="media/front-end/images/cal_button.png" />
+          Add to Cal</span>
           <p id="time"></p>
           <p id="date"></p>
         </div>

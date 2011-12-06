@@ -43,16 +43,20 @@ root.page_init = (epoch, shr, smin, ehr, emin, latitude, longitude, reserve_type
   $("#notifybar").hide()  if $.cookie("studyspaces_visited")
   # creates a hover state for the add_to_cal button
   $("#add_to_cal").hover (->
-    $(this).attr "src", "http://i.imgur.com/T8iq4.png"
+    $("#cal_button").attr "src", "media/front-end/images/cal_button_hover.png"
   ), ->
-    $(this).attr "src", "http://www.gettyicons.com/free-icons/103/pretty-office-2/png/48/add_event_48.png"
+    $("#cal_button").attr "src", "media/front-end/images/cal_button.png"
   map_init(latitude, longitude, reserve_type, building_name)
   # adds events to Google Calendar with new window
   root.calendar = ->
-    dates = sdate_string_google + "Z/" + edate_string_google + "Z"
-    loc = building_name + " - " + room_name
-    details = "Details at: " + shorturl + "%0A%0AEvent created via pennstudyspaces.com"
-    window.open("http://www.google.com/calendar/event?action=TEMPLATE&text=Study Session" + "&dates=" + dates + "&details=" + details + "&location=" + loc, 'Google Calendar', 'height=700,width=900,scrollbars=yes,resizable=yes')
+    url = []
+    url['action'] = "TEMPLATE"
+    url['text'] = "Study Session"
+    url['dates'] = "#{sdate_string_google}Z/#{edate_string_google}Z"
+    url['location'] = "#{building_name} - #{room_name}"
+    url['details'] = "Details at: #{shorturl}\n\nEvent created via pennstudyspaces.com"
+    window.open("http://www.google.com/calendar/event?#{array_to_url(url)}",
+      'Google Calendar', 'height=700,width=900,scrollbars=yes,resizable=yes')
 
 # bookmark site
 root.bookmark_site = (title, url) ->
@@ -103,6 +107,13 @@ _gaq.push [ "_trackPageview" ]
 num_to_str = (num) ->
   return (if num < 10 then "0" else "") + num
 
+# creates a url out of an array of arguments
+array_to_url = (array) ->
+  pairs = []
+  for key of array
+    pairs.push("#{encodeURIComponent(key)}=#{encodeURIComponent(array[key])}"  if array.hasOwnProperty(key))
+  return pairs.join("&")
+
 # Google Maps
 map_init = (latitude, longitude, reserve_type, building_name) ->
   blue_icon = "http://maps.google.com/mapfiles/ms/micons/blue.png"
@@ -121,6 +132,12 @@ map_init = (latitude, longitude, reserve_type, building_name) ->
     icon: icon
     map: map
   )
+  infowindow = new google.maps.InfoWindow(
+    content: building_name,
+    size: new google.maps.Size(50,50)
+  )
+  google.maps.event.addListener(marker, "click", ->
+    infowindow.open(map, marker))
 
 # gets the suffix of a date
 get_nth_suffix = (date) ->

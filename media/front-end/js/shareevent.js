@@ -1,5 +1,5 @@
 (function() {
-  var get_nth_suffix, map_init, num_to_str, root, _gaq;
+  var array_to_url, get_nth_suffix, map_init, num_to_str, root, _gaq;
   root = typeof exports !== "undefined" && exports !== null ? exports : this;
   root.page_init = function(epoch, shr, smin, ehr, emin, latitude, longitude, reserve_type, building_name, room_name, shorturl) {
     var d, d_names, date, date_string, day, eampm, edate_string_google, m_names, month, sampm, sdate_string_google, suffix, time_string, year;
@@ -25,17 +25,20 @@
       $("#notifybar").hide();
     }
     $("#add_to_cal").hover((function() {
-      return $(this).attr("src", "http://i.imgur.com/T8iq4.png");
+      return $("#cal_button").attr("src", "media/front-end/images/cal_button_hover.png");
     }), function() {
-      return $(this).attr("src", "http://www.gettyicons.com/free-icons/103/pretty-office-2/png/48/add_event_48.png");
+      return $("#cal_button").attr("src", "media/front-end/images/cal_button.png");
     });
     map_init(latitude, longitude, reserve_type, building_name);
     return root.calendar = function() {
-      var dates, details, loc;
-      dates = sdate_string_google + "Z/" + edate_string_google + "Z";
-      loc = building_name + " - " + room_name;
-      details = "Details at: " + shorturl + "%0A%0AEvent created via pennstudyspaces.com";
-      return window.open("http://www.google.com/calendar/event?action=TEMPLATE&text=Study Session" + "&dates=" + dates + "&details=" + details + "&location=" + loc, 'Google Calendar', 'height=700,width=900,scrollbars=yes,resizable=yes');
+      var url;
+      url = [];
+      url['action'] = "TEMPLATE";
+      url['text'] = "Study Session";
+      url['dates'] = "" + sdate_string_google + "Z/" + edate_string_google + "Z";
+      url['location'] = "" + building_name + " - " + room_name;
+      url['details'] = "Details at: " + shorturl + "\n\nEvent created via pennstudyspaces.com";
+      return window.open("http://www.google.com/calendar/event?" + (array_to_url(url)), 'Google Calendar', 'height=700,width=900,scrollbars=yes,resizable=yes');
     };
   };
   root.bookmark_site = function(title, url) {
@@ -87,8 +90,16 @@
   num_to_str = function(num) {
     return (num < 10 ? "0" : "") + num;
   };
+  array_to_url = function(array) {
+    var key, pairs;
+    pairs = [];
+    for (key in array) {
+      pairs.push(array.hasOwnProperty(key) ? "" + (encodeURIComponent(key)) + "=" + (encodeURIComponent(array[key])) : void 0);
+    }
+    return pairs.join("&");
+  };
   map_init = function(latitude, longitude, reserve_type, building_name) {
-    var blue_icon, icon, latlng, map, marker, my_options, red_icon;
+    var blue_icon, icon, infowindow, latlng, map, marker, my_options, red_icon;
     blue_icon = "http://maps.google.com/mapfiles/ms/micons/blue.png";
     red_icon = "http://maps.google.com/mapfiles/ms/micons/red.png";
     latlng = new google.maps.LatLng(latitude, longitude);
@@ -99,11 +110,18 @@
     };
     map = new google.maps.Map(document.getElementById("mapbox"), my_options);
     icon = (reserve_type !== "N" ? red_icon : blue_icon);
-    return marker = new google.maps.Marker({
+    marker = new google.maps.Marker({
       position: latlng,
       title: building_name,
       icon: icon,
       map: map
+    });
+    infowindow = new google.maps.InfoWindow({
+      content: building_name,
+      size: new google.maps.Size(50, 50)
+    });
+    return google.maps.event.addListener(marker, "click", function() {
+      return infowindow.open(map, marker);
     });
   };
   get_nth_suffix = function(date) {
