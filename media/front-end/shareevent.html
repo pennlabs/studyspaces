@@ -25,6 +25,7 @@
     <!-- Google Maps -->
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script type="text/javascript" src="media/front-end/js/shareevent.js"></script>
+    <script type="text/javascript" src="media/front-end/js/uservoice.js"></script>
     <script type="text/javascript">
       $('document').ready(function() {
         var reserve_type = "{{ room.kind.reserve_type }}";
@@ -122,92 +123,5 @@
       
       </div>
     </div>
-
-    <style type="text/css">
-      #uservoice-dialog {
-        z-index: 100003;
-        display: block;
-        text-align: left;
-        margin: -2em auto 0 auto;
-        position: absolute;
-      }
-      #uservoice-overlay {
-        position: absolute;
-        z-index:100002;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background-color: #000;
-        opacity: .7;
-        filter: alpha(opacity=70);
-      }
-      #uservoice-dialog[id], #uservoice-overlay[id] {
-        position:fixed;
-      }
-      #uservoice-overlay p {
-        padding: 5px;
-        color: #ddd;
-        font: bold 14px arial, sans-serif;
-        margin: 0;
-        letter-spacing: -1px;
-      }
-      #uservoice-dialog #uservoice-dialog-close {
-        position: absolute;
-        height: 48px;
-        width: 48px;
-        top: -11px;
-        right: -12px;
-        color: #06c;
-        cursor: pointer;
-        background-position: 0 0;
-        background-repeat: no-repeat;
-        background-color: transparent;
-      }
-      * html.dialog-open body {
-        height: 100%;
-      }
-      * html.dialog-open, * html.dialog-open body {
-        overflow: hidden;
-      }
-      html.dialog-open object, html.dialog-open embed, * html.dialog-open select {
-        visibility: hidden;
-      }
-      * html #uservoice-overlay {
-        width: 110%;
-      }
-      * html #uservoice-dialog #uservoice-dialog-close {
-        background: none;
-        filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://uservoice.com/images/icons/close.png');
-      }
-      a#uservoice-dialog-close {
-        background-image: url(http://cdn.uservoice.com/images/icons/close.png);
-      }
-    </style>
-
-    <script type="text/javascript">
-      var uservoiceOptions = {
-        /* required */
-        key: 'pennappslabs',
-        host: 'pennappslabs.uservoice.com',
-        forum: '98069',
-        showTab: true,  
-        /* optional */
-        alignment: 'left',
-        background_color:'#f00', 
-        text_color: 'white',
-        hover_color: '#06C',
-        lang: 'en'
-      };
-      function _loadUserVoice() {
-        var s = document.createElement('script');
-        s.setAttribute('type', 'text/javascript');
-        s.setAttribute('src', ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js");
-        document.getElementsByTagName('head')[0].appendChild(s);
-      }
-      _loadSuper = window.onload;
-      window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
-    </script>
-
   </body>
 </html>
