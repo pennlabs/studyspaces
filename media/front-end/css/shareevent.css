@@ -47,19 +47,53 @@
 #date {
   color:#666;
 }
-#add_to_cal {
-  float:right;
-  font-size:10px;
-  cursor:pointer;
-  color: #666;
+
+/* button class */
+.eventinfo .button {
+	background-color: #CCC;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	padding: 1px 3px;
+	font-size:10px;
+	font-weight:bold;
+	text-decoration:none;
+	color: #FFF;
+		
+	cursor:pointer;
+	
+	float:right;
+	margin-left:5px;
+	
 }
-#add_to_cal:hover {
-  color:#333;
+.eventinfo .button:hover {
+	background-color: #4096EE;
+	border-right: 1px solid #15579C;
+	border-bottom: 1px solid #15579C;
 }
-#cal_button {
-  cursor:pointer;
-  height:10px;
-  width:10px;
+.eventinfo .button:active {
+  border:none;
+	border-top: 1px solid #15579C;
+	border-left: 1px solid #15579C;
+}
+/* extended add_to_gcal button */
+.eventinfo .add_to_gcal.button{
+	background-color: #A2BC13;
+	border-right: 1px solid #8BA446;
+	border-bottom: 1px solid #8BA446;
+}
+.eventinfo .add_to_gcal.button:hover {
+	background-color: #8BA446;
+	border-right: 1px solid #15579C;
+	border-bottom: 1px solid #15579C;
+}
+.eventinfo .add_to_gcal.button:active {
+  border:none;
+	border-top: 1px solid #15579C;
+	border-left: 1px solid #15579C;
 }
 .urlinfo {
   font-size:16px;
