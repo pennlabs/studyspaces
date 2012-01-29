@@ -1,0 +1,100 @@
+@charset "utf-8";
+/* CSS Document */
+/* main cyan:	#4096EE */
+.roominfo .roomkindname {
+  color:#666;
+}
+.roominfo .buildingname {
+  color:#4096EE;	
+}
+.roominfo .roomname {
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+.roominfo div.icons {
+  position:absolute;
+  right:0;
+  top:0;
+  
+  z-index:10;
+}
+.roominfo .icons img {
+  vertical-align:bottom;
+}
+.roominfo .capacity {
+  display:inline;
+  background-color:#CCC;
+  color:#FFF;
+  font-size:10px;
+  font-weight:bold;
+  padding:2px;
+  cursor:default;
+}
+
+.eventinfo {
+  margin-top:15px;
+  border-top:#CCC 1px solid;
+  padding-top:15px;	
+  margin-bottom:15px;
+  border-bottom:#CCC 1px solid;
+  padding-bottom:15px;	
+}
+#time {
+  font-size:18px;
+  margin-bottom:5px;
+}
+#date {
+  color:#666;
+}
+
+/* button class */
+.eventinfo .button {
+	background-color: #CCC;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	padding: 1px 3px;
+	font-size:10px;
+	font-weight:bold;
+	text-decoration:none;
+	color: #FFF;
+		
+	cursor:pointer;
+	
+	float:right;
+	margin-left:5px;
+	
+}
+.eventinfo .button:hover {
+	background-color: #4096EE;
+	border-right: 1px solid #15579C;
+	border-bottom: 1px solid #15579C;
+}
+.eventinfo .button:active {
+  border:none;
+	border-top: 1px solid #15579C;
+	border-left: 1px solid #15579C;
+}
+/* extended add_to_gcal button */
+.eventinfo .add_to_gcal.button{
+	background-color: #A2BC13;
+	border-right: 1px solid #8BA446;
+	border-bottom: 1px solid #8BA446;
+}
+.eventinfo .add_to_gcal.button:hover {
+	background-color: #8BA446;
+	border-right: 1px solid #15579C;
+	border-bottom: 1px solid #15579C;
+}
+.eventinfo .add_to_gcal.button:active {
+  border:none;
+	border-top: 1px solid #15579C;
+	border-left: 1px solid #15579C;
+}
+.urlinfo {
+  font-size:16px;
+}
