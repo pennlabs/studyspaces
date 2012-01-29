@@ -167,6 +167,10 @@ div#rightColumn {
 	float:right;
 	width:365px;
 }
+div#rightColumn.fixed {
+	position: fixed;
+	top: 20px;
+}
 
 div#mapbox {
 	background:#FFF;
@@ -192,7 +196,7 @@ div#promo {
 }
 
 div#shares {
-	width: 170px;
+	width: 140px;
 	margin-top: 15px;
 	margin-right:auto;
 	margin-left:auto;

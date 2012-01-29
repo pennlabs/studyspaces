@@ -121,6 +121,7 @@ map_init = (latitude, longitude, reserve_type, building_name) ->
   latlng = new google.maps.LatLng(latitude, longitude)
   my_options =
     zoom: 15
+    scrollwheel: false
     center: latlng
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
@@ -133,8 +134,7 @@ map_init = (latitude, longitude, reserve_type, building_name) ->
     map: map
   )
   infowindow = new google.maps.InfoWindow(
-    content: building_name,
-    size: new google.maps.Size(50,50)
+    content: building_name
   )
   google.maps.event.addListener(marker, "click", ->
     infowindow.open(map, marker))

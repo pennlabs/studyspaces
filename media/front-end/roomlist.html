@@ -2,12 +2,14 @@
 		
 	{% for bd in bd_reservable_dict %}
 		{% if rk.building == bd %}
-			<div id="roomIn{{forloop.counter0}}" class="room roomIn{{forloop.counter0}}"
-				onMouseOver="hilightOn(this)" onMouseOut="hilightOff(this)">				
+			<div building_num="{{forloop.counter0}}" class="room"
+				onClick="open_infowindow_by_label(this);"
+        onMouseOver="hilight_on(this);"
+        onMouseOut="clear_hilights();">				
 		{% endif %}
 	{% endfor %}
 				
-		<a class="share button" onClick="shareEvent({{rval.0.id}})" target="_blank">share</a>
+		<a class="share button" onClick="share_event({{rval.0.id}})" target="_blank">share</a>
 		{% if rk.reserve_type != 'N' %}			
 			<a class="reserve button" href="{{rk.deeplink_reserve_url}}" target="_blank">reserve</a>
 		{% endif %}
