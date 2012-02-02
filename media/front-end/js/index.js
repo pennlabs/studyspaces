@@ -364,19 +364,32 @@ $(document).ready(function () {
 	$('#time_s_entry').timeEntry({spinnerImage:'', beforeShow: customRange}).timeEntry('setTime', getCurrTimeRound(0)).blur(timeentry_update).change(timeentry_s_change);
 	$('#time_e_entry').timeEntry({spinnerImage:'', beforeShow: customRange}).timeEntry('setTime', getCurrTimeRound(1)).blur(timeentry_update);
 	
+	
+	
+	
+	$(window).resize(function() {
+		var top = $('#main').position().top;
+		var scrolled = $(this).scrollTop();
+		$('div#rightColumn').removeClass('fixed');
+		$('div#rightColumn').css('left', 0);
+		$('div#rightColumn').css('top', scrolled - top - OFFSET);
+		console.log($('div#rightColumn').css('left'));
+	});
+	
 	$(window).scroll(function () {
 		// move rightColumn down as page is scrolled
 		var top = $('#main').position().top;
 		var scrolled = $(this).scrollTop();
-		
-		if(scrolled + OFFSET > top && $('div#rightColumn').css('position') != 'fixed') {
+		if(scrolled - OFFSET > top && $('div#rightColumn').css('position') != 'fixed') {
 			var left = $('div#rightColumn').offset().left;
 			$('div#rightColumn').addClass('fixed');
 			// fixes the left position
 			$('div#rightColumn').css('left', left);
+			$('div#rightColumn').css('top', OFFSET);
 		} else if (scrolled - OFFSET < top) {
 			$('div#rightColumn').removeClass('fixed');
 			$('div#rightColumn').css('left', 0);
+			$('div#rightColumn').css('top', 0);
 		}
 	});
  
