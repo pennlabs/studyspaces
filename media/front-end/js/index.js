@@ -363,21 +363,24 @@ $(document).ready(function () {
 	$('#time_s_entry').timeEntry({spinnerImage:'', beforeShow: customRange}).timeEntry('setTime', getCurrTimeRound(0)).blur(timeentry_update).change(timeentry_s_change);
 	$('#time_e_entry').timeEntry({spinnerImage:'', beforeShow: customRange}).timeEntry('setTime', getCurrTimeRound(1)).blur(timeentry_update);
 	
+	var top = $('#main').position().top;
+	var threshold = top + OFFSET;
+	
 	$(window).resize(function() {
 		if ($('#rightColumn').css('position') == 'fixed') {
-			var top = $('#main').position().top;
-			var scrolled = $(this).scrollTop();
+			var tmp_top = $('#rightColumn').offset().top;
 			$('div#rightColumn').removeClass('fixed');
 			$('div#rightColumn').css('left', 0);
-			$('div#rightColumn').css('top', scrolled - top + OFFSET);
+			$('div#rightColumn').css('top', tmp_top - threshold- OFFSET);
+			console.log($('div#rightColumn').css('top'));
 		}
 	});
 	
+	console.log(threshold);
+	
 	$(window).scroll(function () {
-		// move rightColumn down as page is scrolled
-		var top = $('#main').position().top;
 		var scrolled = $(this).scrollTop();
-		var threshold = top - OFFSET;
+		console.log(scrolled);
 		if(scrolled > threshold && $('div#rightColumn').css('position') != 'fixed') {
 			var left = $('div#rightColumn').offset().left;
 			// fixes the left position
