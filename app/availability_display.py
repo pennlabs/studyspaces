@@ -16,7 +16,7 @@ def timeint2block(timeint, round = 'down'):
       either up or down """
   (hr, mn) = (timeint/100, timeint % 100)
   hfloat = hr + mn/60.0
-  return {'up': ceil, 'down': floor}[round](hfloat*BLOCKS_PER_HOUR)
+  return int({'up': ceil, 'down': floor}[round](hfloat*BLOCKS_PER_HOUR))
 
 def timerange2blockrange(timerange):
   """ convert a TimeRange to a list of block indices including that range """
