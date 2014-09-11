@@ -4,6 +4,10 @@ from urllib import urlencode
 sys.path.append(os.path.realpath(os.path.join(os.path.dirname(__file__),"../availability_cron")))
 from library_map import library_map, library_name_to_ids
 
+PENN_LIBRARY_BASE_URL = "http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?"
+HUNTSMAN_BUILDING_NAME = "Jon M. Huntsman Hall"
+WHARTON_SPIKE_BASE_URL = "http://spike.wharton.upenn.edu/Calendar/gsr.cfm?"
+
 def library_name_to_shortlib(name):
   prefix = name.split(":")[0]
   prefix_map = {"USC" :"vpusc",
@@ -29,7 +33,7 @@ def get_reserve_url(room, day, time_from, time_to):
                              time_to%100 - time_from%100)
     num_people = room.kind.max_occupancy
     duration = 60*hour_diff + min_diff
-    return "http://bookit.library.upenn.edu/cgi-bin/rooms/rooms?" + urlencode((
+    return PENN_LIBRARY_BASE_URL + urlencode((
               ("library", library_name_to_shortlib(library_name)),
               ("date", date),
               ("inquiry", "roomBook"),
@@ -38,14 +42,14 @@ def get_reserve_url(room, day, time_from, time_to):
               ("time", time),
               ("length", duration),
               ("numPeople", num_people)))
-  elif room.kind.building.name == "Jon M. Huntsman Hall":
+  elif room.kind.building.name == HUNTSMAN_BUILDING_NAME:
     #Huntsman Deep Linking
     date = day.strftime("%m/%d/%Y")
     time = "%02d:%02d" % (time_from/100, time_from%100)
     (hour_diff, min_diff) = (time_to/100 - time_from/100,
                              time_to%100 - time_from%100)
     duration = 60*hour_diff + min_diff
-    return "http://spike.wharton.upenn.edu/Calendar/gsr.cfm?" + urlencode((
+    return WHARTON_SPIKE_BASE_URL + urlencode((
               ("date", date),
               ("start_time", time),
               ("duration", duration),
