@@ -12,12 +12,12 @@ br = mechanize.Browser()
 B_LEVINE = "Levine Hall"
 
 roommappings = {
-"CIS_Levine_307_Public": ("Levine Hall Conference Room 307", B_LEVINE),
-"CIS_Levine_315_Public": ("Levine Hall Conference Room 315", B_LEVINE),
-"CIS_Levine_512_Public": ("Levine Hall Conference Room 512", B_LEVINE),
-"CIS_Levine_612_Public": ("Levine Hall Conference Room 612", B_LEVINE),
-"Dean_Levine_Lobby_Public": ("Levine Hall Lobby and Mezzanine", B_LEVINE),
-"Dean_Wu_Chen_Public": ("Levine Hall Room 101 - Wu and Chen Auditorium", B_LEVINE),
+  "CIS_Levine_307_Public": ("Levine Hall Conference Room 307", B_LEVINE),
+  "CIS_Levine_315_Public": ("Levine Hall Conference Room 315", B_LEVINE),
+  "CIS_Levine_512_Public": ("Levine Hall Conference Room 512", B_LEVINE),
+  "CIS_Levine_612_Public": ("Levine Hall Conference Room 612", B_LEVINE),
+  "Dean_Levine_Lobby_Public": ("Levine Hall Lobby and Mezzanine", B_LEVINE),
+  "Dean_Wu_Chen_Public": ("Levine Hall Room 101 - Wu and Chen Auditorium", B_LEVINE),
 }      
 
 def fetch_updates(date):
