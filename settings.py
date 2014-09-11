@@ -6,6 +6,8 @@ TEMPLATE_DEBUG = DEBUG
 
 from sandbox_config import * # may override DEBUG
 
+# Default values are Penn Labs specific
+# Change based on specific server configuration
 ADMINS = (
     ('PennApps', 'pennappslabs@googlegroups.com'),
 )
