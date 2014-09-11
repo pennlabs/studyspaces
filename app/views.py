@@ -11,13 +11,17 @@ from reserve_url import get_reserve_url
 import urllib
 import urllib2
 import json
+import os
 
+BITLY_URL = "http://api.bitly.com/v3/shorten?"
 
 def bitly(long_url):
-  url = "http://api.bitly.com/v3/shorten?"
+  url = BITLY_URL
   args = {}
-  args['login'] = "cbautista2010"  # you should use your own api key
-  args['apiKey'] = "R_75252ce0ebaff7d49978f5e087a2c466"
+  args['login'] = os.getenv('BITLY_LOGIN')
+  args['apiKey'] = os.getenv('BITLY_API_KEY')
+  if args['login'] is None or args['apiKey'] is None:
+      raise OSError("Please set the BITLY_LOGIN and BITLY_API_KEY environment variables")
   args['longUrl'] = str(long_url)
   args['format'] = 'json'
   formatted = url + urllib.urlencode(args)
