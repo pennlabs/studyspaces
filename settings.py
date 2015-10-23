@@ -5,6 +5,10 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 from sandbox_config import DATABASE_PASSWORD
 
+# making template path relative to allow for modular development
+# thanks http://komunitasweb.com/2010/06/relative-path-for-your-django-project/
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+
 # Default values are Penn Labs specific
 # Change based on specific server configuration
 ADMINS = (
@@ -46,12 +50,12 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(PROJECT_PATH + '/media/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -77,10 +81,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'studyspaces.urls'
 
-# making template path relative to allow for modular development
-# thanks http://komunitasweb.com/2010/06/relative-path-for-your-django-project/
-PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
-
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'media/front-end'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -95,4 +95,3 @@ INSTALLED_APPS = (
     'app',
     'south',
 )
-
