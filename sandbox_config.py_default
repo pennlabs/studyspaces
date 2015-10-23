@@ -14,3 +14,13 @@ STUDYSPACES_APP_ROOT = os.path.join(DEV_ROOT, "studyspaces")
 
 DATABASE_PASSWORD = 'this is not a password'
 SECRET_KEY = 'bleeeeeaaaaaaarrrrrrrrghhhhhhhhhhhhhhhhhhh'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'studyspaces',  # Or path to database file if using sqlite3.
+        'USER': 'studyspaces',  # Not used with sqlite3.
+        'HOST': '',             # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',             # Set to empty string for default. Not used with sqlite3.
+    }
+}

@@ -3,15 +3,14 @@ import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
-from sandbox_config import * # may override DEBUG
+from sandbox_config import DATABASE_PASSWORD
 
 # Default values are Penn Labs specific
 # Change based on specific server configuration
 ADMINS = (
-    ('PennApps', 'pennappslabs@googlegroups.com'),
+    ('Penn Labs', 'admin@pennlabs.org'),
 )
-SERVER_EMAIL="pennapps@ve.rckr5ngx.vesrv.com"
+SERVER_EMAIL = "admin+studyspaces@pennlabs.org"
 
 MANAGERS = ADMINS
 
@@ -25,6 +24,8 @@ DATABASES = {
         'PORT': '',             # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+from sandbox_config import * # may override DEBUG
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -81,7 +82,7 @@ ROOT_URLCONF = 'studyspaces.urls'
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 TEMPLATE_DIRS = (
-  os.path.join(PROJECT_PATH, 'media/front-end'),
+    os.path.join(PROJECT_PATH, 'media/front-end'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
 )
 
@@ -94,4 +95,4 @@ INSTALLED_APPS = (
     'app',
     'south',
 )
-  
+
