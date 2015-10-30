@@ -369,17 +369,12 @@ $(document).ready(function () {
 	
 	$(window).scroll(function () {
 		var scrolled = $(this).scrollTop();
-		console.log(scrolled);
-		if(scrolled > threshold && $('div#rightColumn').css('position') != 'fixed') {
-			var left = $('div#rightColumn').offset().left;
-			// fixes the left position
-			$('div#rightColumn').css('left', left);
-			$('div#rightColumn').css('top', OFFSET);
-			$('div#rightColumn').addClass('fixed');
-		} else if (scrolled < threshold) {
-			$('div#rightColumn').removeClass('fixed');
-			$('div#rightColumn').css('left', 0);
-			$('div#rightColumn').css('top', 0);
+		var top = $('#main').position().top;
+		if (top < scrolled) {
+			$('div#rightColumn').animate({top: scrolled - top},100);
+		}
+		else if (top >= scrolled) {
+			$('div#rightColumn').animate({top: 0},1.0);
 		}
 	});
  
